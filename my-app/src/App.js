@@ -13,6 +13,9 @@ class App extends Component {
             <button id="tweet-quotee">facebook-quote</button>
           </div>
         </div>
+        <div class="footer">
+          by <a>alid</a>
+        </div>
       </div>
     );
   }

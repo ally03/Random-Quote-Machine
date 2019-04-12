@@ -40,31 +40,51 @@ const quoteShuffle = [
 ];
 
 class RamdomQuote extends Component {
-  // constructor([props]) {
-  //     super(props);
-  //     this.state ={
-  //         nextQuote: ''
-  //     };
+  constructor(props) {
+    super(props);
+    this.state = {
+      renObjData: quoteShuffle[Math.floor(Math.random() * quoteShuffle.length)]
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    this.setState({
+      renObjData: quoteShuffle[Math.floor(Math.random() * quoteShuffle.length)]
+    });
+  }
+
   render() {
-    console.log(quoteShuffle);
-    const renObjData =
-      quoteShuffle[Math.floor(Math.random() * quoteShuffle.length)];
+    console.log(this.state.renObjData);
+    let { quote, author, id } = this.state.renObjData;
+    // function renObjData(quote, author) {
+    //   quoteShuffle[Math.floor(Math.random() * quoteShuffle.length)];
+    // }
+    // console.log(quoteShuffle);
+    // const renObjData =
+    //   quoteShuffle[Math.floor(Math.random() * quoteShuffle.length)];
+    // console.log(renObjData);
+
     // const renObjData = quoteShuffle.map(function(quoteShuffle, ida, idx) {
     //   return [
     //     <p key={ida}>{quoteShuffle.quote}</p>,
     //     <p key={idx}>{quoteShuffle.author}</p>
     //   ];
     // });
-    console.log(renObjData);
     return (
       <div>
-        <h1>{renObjData.quote}</h1>
-        <p id="author" className="author">
-          {renObjData.author}
-        </p>
-        <button className="App-newQuote" id="new-quote">
-          new quote
-        </button>
+        <h1>{quote}</h1>
+        <span id="author" className="author">
+          {author}
+        </span>
+        <div>
+          <button
+            className="App-newQuote"
+            id="new-quote"
+            onClick={this.handleClick}
+          >
+            new quote
+          </button>
+        </div>
       </div>
     );
   }
